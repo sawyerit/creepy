@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-# 
+#
 # Crawler.py
 #
 # Copyright (C) 2010 -  Wei-Ning Huang (AZ) <aitjcize@gmail.com>
@@ -38,7 +38,7 @@ class Document(object):
 
 class Crawler(object):
     '''
-    A Crawler that crawls through cplusplus.com
+    A Crawler
     '''
     F_ANY, F_SAME_DOMAIN, F_SAME_HOST, F_SAME_PATH = range(4)
     def __init__(self):
@@ -71,7 +71,7 @@ class Crawler(object):
 
     def set_concurrency_level(self, level):
         self.max_outstanding = level
-        
+
     def set_max_depth(self, max_depth):
         self.max_depth = max_depth
 
@@ -154,7 +154,7 @@ class Crawler(object):
                 return link_url
             else:
                 return None
-    
+
     def _calc_depth(self, url):
         #calculate url depth
         return len(url.replace('https', 'http').replace(self.root_url, '').rstrip('/').split('/'))-1
@@ -162,7 +162,7 @@ class Crawler(object):
     def _add_target(self, target):
         if not target:
             return
-        
+
         if self.max_depth and self._calc_depth(target) > self.max_depth:
             return
 

@@ -13,5 +13,8 @@ class TestCrawler(Crawler):
         print 'GET', doc.status, doc.url
         self.process_lock.release()
 
-c = TestCrawler()
-c.crawl('http://aborigine.moc.gov.tw')
+crawler = TestCrawler()
+crawler.set_follow_mode(Crawler.F_ANY)
+crawler.set_concurrency_level(100)
+crawler.add_url_filter('\.(jpg|jpeg|gif|png|js|css|swf)$')
+crawler.crawl('http://www.msn.com/')
